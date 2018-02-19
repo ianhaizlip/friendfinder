@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Frined Finder: survey</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+
+	    <div class="jumbotron">
+		    <h1 class="text-center"></span>Friend Finder Survey</h1>
+		    <hr>
+		    <h2 class="text-center">Please fill this out as honestly as possible.</h2>
+		    <br>
+
+		    <div class="text-center">
+		        <a href="/"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicons glyphicons-home"></span>Home</button></a>
+		    </div>
+
+	    </div>
+
+	    <div id = "main">
+	    	<!-- <form> -->
+	    		<div class="form-group">
+				    <label for="name">Name</label>
+				    <input type="text" class="form-control" id="name" placeholder="name">
+			    </div>
+			    <div class="form-group">
+				    <label for="image">image</label>
+				    <input type="text" class="form-control" id="image" placeholder="url">
+			    </div>
+				<div class="form-group">
+				    <label for="distance">How comfortable are you with a log distance relationship?</label>
+				    <select class="form-control" id="distance">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="looks">How attractive do you find yourself?</label>
+				    <select class="form-control" id="looks">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="single">How comfortable are you being single?</label>
+				    <select class="form-control" id="single">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="math">Do you like Math/Science?</label>
+				    <select class="form-control" id="math">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="creative">Are you creative?</label>
+				    <select class="form-control" id="creative">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="humor">How funny do you find yourself?</label>
+				    <select class="form-control" id="humor">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="outdoors">How outdoorsy are you?</label>
+				    <select class="form-control" id="outdoors">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="house">How many bedrooms do you want in your house?</label>
+				    <select class="form-control" id="house">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="cars">How many cars do you want?</label>
+				    <select class="form-control" id="cars">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<div class="form-group">
+				    <label for="posative">How posative are you?</label>
+				    <select class="form-control" id="posative">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				    </select>
+				</div>
+				<button type="submit" class="btn btn-primary" id="action">Submit</button>
+			<!-- </form> -->
+	    </div>	
+		<br>
+	    <footer class="footer">
+	        <div class="container">
+	            <p><a href="/api/friends">API Table Link</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p>
+	        </div>
+	    </footer>
+
+	</div>
+</body>
+<script type="text/javascript">
+	$("#action").click(function(event) {
+      event.preventDefault();
+
+      console.log('click is working');
+      // Here we grab the form elements
+      let newScore = new Array();
+      newScore.push(+$("#distance").val().trim());
+      newScore.push(+$("#looks").val().trim());
+      newScore.push(+$("#single").val().trim());
+      newScore.push(+$("#math").val().trim());
+      newScore.push(+$("#creative").val().trim());
+      newScore.push(+$("#humor").val().trim());
+      newScore.push(+$("#outdoors").val().trim());
+      newScore.push(+$("#house").val().trim());
+      newScore.push(+$("#cars").val().trim());
+      newScore.push(+$("#posative").val().trim());
+
+      let newFriend = {
+        name: $("#name").val().trim(),
+        image: $("#image").val().trim(),
+        score: newScore
+      };
+
+      console.log(newFriend);
+
+      fetch('/api/friends', {
+		  method: 'POST', // or 'PUT'
+		  body: JSON.stringify(newFriend), 
+		  headers: new Headers({
+		    'Content-Type': 'application/json'
+		  })
+		}).then(res => res.json())
+		.catch(error => console.error('Error:', error))
+		.then(response => {
+			// friends.push(newFriend);
+			console.log('Success:', response)
+		});
+
+		console.log('matching to user')
+		fetch('/api/friends', {
+			method: 'GET', // or 'PUT'
+			// body: JSON.stringify(friends), 
+			headers: new Headers(
+			  // {
+			  //   'Content-Type': 'application/json'
+			  // }
+		    )
+		}).then(res => res.json())
+		.catch(error => console.error('Error:', error))
+		.then(response => {
+			//remove the friend to be matched with
+			console.log(response);
+			// console.log(JSON.strigify(response));
+			let currentIndex = response.length;
+			console.log(response);
+			let otherFriends = response.splice(0,currentIndex-1);
+			console.log(currentIndex);
+			console.log(otherFriends);
+
+			//calculates everybodies score
+			console.log(newFriend);
+			let currentFriend = newFriend;
+			console.log(currentFriend);
+			const reducer = (accumulator, currentValue) => accumulator + currentValue;
+			let currentScore = currentFriend.score.reduce(reducer,0);
+			let totalScores = new Array();
+			otherFriends.forEach(function(element){
+				console.log(element);
+				totalScores.push(element.score.reduce(reducer,0));
+			});
+			//find the difference between scores
+			let matchScore = new Array();
+			totalScores.map((element)=>{
+				let scoreHolder = currentScore - element;
+				matchScore.push(+scoreHolder);
+			});
+			let minMatch = Math.min(...matchScore);
+			console.log(matchScore);
+			console.log(minMatch);
+			let matchIndex = matchScore.indexOf(minMatch);
+			console.log(matchIndex);
+			let matchFriend = otherFriends[matchIndex];
+			console.log(matchFriend);
+
+			//print match
+			let print = `
+			<h2>Here is your match!</h2>
+			<img src="${matchFriend.image}">
+			<h4>${matchFriend.name}</h4>
+			`;
+
+			$('#main').html(print);
+		});
+
+    });
+	
+</script>
+</html>
